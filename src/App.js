@@ -161,8 +161,8 @@ componentDidMount() {
                       {this.state.moveTwo}
                       </Button>
                     </Col>
-                    </Row>
-                    <Row>
+                  </Row>
+                  <Row>
                       <Col  xs={6}>
                         <Button variant="primary" size="lg" href="/"  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px',  }}>
                         {this.state.moveThree}
