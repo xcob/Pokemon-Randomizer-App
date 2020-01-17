@@ -58,7 +58,7 @@ function Home(){
   return (
     <div>
       <Button variant="primary" size="lg" href="/PokemonGet">
-        Get Pokemon
+        <Link to="/PokemonGet" style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Pokemon</Link>
       </Button>
     </div>
 )
