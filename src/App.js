@@ -74,6 +74,7 @@ class PokemonGet extends React.Component {
 
     this.state = {
         isLoading: true,
+        progress: 0,
         msElapsed: 0,
         random: 0,
         pokemonSprite: '',
@@ -105,6 +106,7 @@ componentDidMount() {
                 moveFour: pokemon.moves[moveNumberFour].move.name,
                 // color: pokemon.species.id,
                 isLoading: false,
+                progress: 100,
                 pokemonHeight: pokemon.height,
                 pokemonWeight: pokemon.weight,
                 // pokemonTypeOne: pokemon.types[0].type.name,
@@ -116,17 +118,19 @@ componentDidMount() {
  
     // show loading animation while waiting on axios 
     // function pokemonReturn() {
-    //   if (this.state.isLoading == true){
-       
-    //           <div>
-    //            <ProgressBar animated now={45} />
-    //           </div>
-        
-          
-      //  return pokemon and move set from api
-    //  }else  if (this.state.isLoading == false){
-      
+   
       render() {
+           
+        
+        if (this.state.isLoading === true){
+          return (
+              <div>
+               <ProgressBar animated now={this.state.progress} />
+              </div>
+          );
+      // return pokemon and move set from api
+         }else  if (this.state.isLoading === false){
+      
           return (
          
                 // <Text style={styles.developmentModeText}>{this.state.pokemonName}</Text>
@@ -139,10 +143,10 @@ componentDidMount() {
                   <div>
                     <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>{this.state.pokemonName}</h1>
                     <Image  style={{justifyContent: 'center', width: '50%', marginLeft: '25%', }} src={this.state.pokemonSprite} />
-                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> Height: 
+                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> Height:  
                     {this.state.pokemonHeight} 
                     </h3>
-                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> Weight: 
+                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> Weight:  
                     {this.state.pokemonWeight} 
                     </h3>          
                   </div>
@@ -187,7 +191,7 @@ componentDidMount() {
 
 
 
-
+}
   
 
 function Users() {
