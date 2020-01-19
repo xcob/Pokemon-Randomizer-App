@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import pokemonLogo from './pokemon-logo-vector.png';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import axios from 'axios';
-import { Button, Image, ProgressBar, Container, Row, Col } from 'react-bootstrap';
+import { Button, Image, ProgressBar, Container, Row, Col, Navbar, Nav, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -16,39 +17,39 @@ function App() {
       <Container>
                 <Row>
                   <Col  xs={12} >
-                  <div>
-                    <nav>
-                      <ul>
-                        <li>
+                  <Navbar bg="light" expand="lg">
+                    <Navbar.Brand href="/">
+                    <img
+                        src={pokemonLogo}
+                        width="150"
+                        height="150"
+                        className="d-inline-block align-top"
+                        alt=""
+                      />
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                      <Nav className="mr-auto">
                           <Link to="/">Home</Link>
-                        </li>
-                        <li>
                           <Link to="/PokemonGet">Pokemon</Link>
-                        </li>
-                        <li>
-                          <Link to="/users">Users</Link>
-                        </li>
-                      </ul>
-                    </nav>
-
-                    {/* A <Switch> looks through its children <Route>s and
-                        renders the first one that matches the current URL. */}
-                    <Switch>
-                      <Route path="/PokemonGet">
-                        <PokemonGet />
-                      </Route>
-                      <Route path="/users">
-                        <Users />
-                      </Route>
-                      <Route path="/">
-                        <Home />
-                      </Route>
-                    </Switch>
-                  </div>
+                          <Link to="/CardGet">Cards</Link>
+                      </Nav>
+                    </Navbar.Collapse>
+                  </Navbar>
                   </Col>
                 </Row>
               </Container>
-     
+              <Switch>
+                <Route path="/PokemonGet">
+                  <PokemonGet />
+                         </Route>
+                          <Route path="/CardGet">
+                            <CardGet />
+                          </Route>
+                          <Route path="/">
+                            <Home />
+                          </Route>
+                        </Switch>
     </Router>
   );
 }
@@ -57,9 +58,7 @@ function Home(){
   
   return (
     <div>
-      <Button variant="primary" size="lg" href="/PokemonGet">
-        <Link to="/PokemonGet" style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Pokemon</Link>
-      </Button>
+     <h1 style={{textTransform: 'capitalize', textAlign: 'center', }} >Pokemon Sprite and Card Generator</h1>
     </div>
 )
 }
@@ -130,6 +129,9 @@ componentDidMount() {
           );
       // return pokemon and move set from api
          }else  if (this.state.isLoading === false){
+          function refreshPage(){ 
+              window.location.reload(); 
+          }
       
           return (
          
@@ -155,28 +157,29 @@ componentDidMount() {
                   </Col>
                 </Row>
                   <Row  style={{justifyContent: 'center', }}>
-                    <Col  xs={6}>
-                        <Button variant="primary" size="lg" href="/"  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px', }}>
+                    <Col xs={3}>
+                    </Col>
+                    <Col style={{justifyContent: 'center', marginLeft: '',}}  xs={6}>
+                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center',  margin: '5px',   width: '100%',}}>
                         {this.state.moveOne}
-                        </Button>
-                      </Col>
-                    <Col  xs={6}>
-                      <Button variant="primary" size="lg" href="/"  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px',  }}>
+                      </Button>
+                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px',   width: '100%',}}>
+                        {this.state.moveThree}
+                      </Button>
+                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px', width: '100%', }}>
                       {this.state.moveTwo}
                       </Button>
-                    </Col>
-                  </Row>
-                  <Row>
-                      <Col  xs={6}>
-                        <Button variant="primary" size="lg" href="/"  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px',  }}>
-                        {this.state.moveThree}
-                        </Button>
-                      </Col>
-                      <Col  xs={6}>
-                        <Button variant="primary" size="lg" href="/"  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px',  }}>
+                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px', width: '100%', }}>
                         {this.state.moveFour}
                         </Button>
                       </Col>
+                    <Col   xs={3}>
+                    </Col>
+                  </Row>
+                    <Row style={{justifyContent: 'center', }}>
+                      <Button variant="primary" size="sm" onClick={refreshPage} style={{ marginTop: '20px', }}>
+                        <p style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', verticalAlign: 'middle', }}>Get New Pokemon</p>
+                      </Button>   
                     </Row>
               </Container>
            
@@ -194,8 +197,88 @@ componentDidMount() {
 }
   
 
-function Users() {
-  return <h2>Users</h2>;
+class CardGet extends React.Component{
+  state = {
+    pokemonCards: []
+}
+constructor(props) {
+  super(props);
+  this.state = {
+      isLoading: true, 
+      progress: 50,
+
+  };
 }
 
+componentDidMount() {
+
+  //assign move to random number for object
+      // let moveNumberOne = Math.floor(Math.random() * 35) + 1;
+      // let moveNumberTwo = Math.floor(Math.random() * 20) + 11;
+      // let moveNumberThree = Math.floor(Math.random() * 30) + 12;
+      // let moveNumberFour = Math.floor(Math.random() * 30) + 13;
+      //assign end of api call to random number
+      let APINumber = Math.floor(Math.random() * 40) + 1;
+      let APIString = String(APINumber);
+      let baseSetNumberAPI = Math.floor(Math.random() * 6) + 1;
+      let baseSetNumber = String(baseSetNumberAPI);
+      
+      //console.log(APIString);
+  axios
+  // make the call to the pokemon api
+      .get(`https://api.pokemontcg.io/v1/cards/base` + baseSetNumber + `-` + APIString, {
+        // headers: {
+        //   Count: 10,  
+        // }
+      })
+      .then(res => {
+          const cards = res.data;
+          console.log(cards);
+          this.setState({
+            pokemonCardImage: cards.card.imageUrl,
+            pokemonName: cards.card.name,
+            isLoading: false,
+            progress: 100,
+            setName: cards.card.set,
+            rarity: cards.card.rarity
+          });
+      })
+}
+render() {
+  // show loading animation while waiting on axios 
+  if (this.state.isLoading === true){
+    return (
+        <div>
+         <ProgressBar animated now={this.state.progress} />
+        </div>
+    );
+
+    // return pokemon card and name currently 
+  }else if (this.state.isLoading === false){
+    function refreshPage(){ 
+        window.location.reload(); 
+    }
+      return (
+        <Container>
+          <Row>
+            <Col  xs={12}>
+            <div  style={{textAlign: 'center', }}>
+              <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>YOU GOT {this.state.pokemonName}</h1>
+              <Image  style={{justifyContent: 'center', width: '6/0%', }} src={this.state.pokemonCardImage} />     
+              <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Set: {this.state.setName}</h3> 
+              <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Rarity: {this.state.rarity}</h3> 
+              <Button variant="primary" size="lg" onClick={refreshPage}>
+                <h4 style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Get New Card</h4>
+              </Button>  
+            </div>
+            
+            </Col>
+          </Row>
+        </Container>
+
+    );
+  }
+}
+
+}
 export default App;
