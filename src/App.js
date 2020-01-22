@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import pokemonLogo from './pokemon-logo-vector.png';
+import wallpaper from './Pokemon_Venusaur_chips_white_background_Doritos_1920x1080.jpg';
 import {
   BrowserRouter as Router,
   Switch,
@@ -59,6 +60,7 @@ function Home(){
   return (
     <div>
      <h1 style={{textTransform: 'capitalize', textAlign: 'center', }} >Pokemon Sprite and Card Generator</h1>
+     <img src={wallpaper} />
     </div>
 )
 }
