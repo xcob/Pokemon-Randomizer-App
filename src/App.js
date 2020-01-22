@@ -40,13 +40,13 @@ function App() {
                 </Row>
               </Container>
               <Switch>
-                <Route path="/PokemonGet">
-                  <PokemonGet />
+                        <Route path="/PokemonGet" component={PokemonGet}>
+                             <PokemonGet />
                          </Route>
-                          <Route path="/CardGet">
+                          <Route path="/CardGet" component={CardGet}>
                             <CardGet />
                           </Route>
-                          <Route path="/">
+                          <Route path="/" component={Home}>
                             <Home />
                           </Route>
                         </Switch>
@@ -73,7 +73,7 @@ class PokemonGet extends React.Component {
 
     this.state = {
         isLoading: true,
-        progress: 0,
+        progress: 25,
         msElapsed: 0,
         random: 0,
         pokemonSprite: '',
@@ -130,7 +130,7 @@ componentDidMount() {
       // return pokemon and move set from api
          }else  if (this.state.isLoading === false){
           function refreshPage(){ 
-              window.location.reload(); 
+             PokemonGet();
           }
       
           return (
@@ -177,8 +177,8 @@ componentDidMount() {
                     </Col>
                   </Row>
                     <Row style={{justifyContent: 'center', }}>
-                      <Button variant="primary" size="sm" onClick={refreshPage} style={{ marginTop: '20px', }}>
-                        <p style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', verticalAlign: 'middle', }}>Get New Pokemon</p>
+                      <Button variant="primary" size="sm"  style={{ marginTop: '20px', }}>
+                        <Link to="/PokemonGet"><p style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', verticalAlign: 'middle', }}>Get New Pokemon</p></Link>
                       </Button>   
                     </Row>
               </Container>
@@ -205,7 +205,7 @@ constructor(props) {
   super(props);
   this.state = {
       isLoading: true, 
-      progress: 50,
+      progress: 60,
 
   };
 }
