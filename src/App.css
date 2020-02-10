@@ -29,6 +29,11 @@
   height: 100vh;
 }
 
+.menuItem{
+  margin-right: 10px;
+  font-size: 18px;
+}
+
 .App-link {
   color: #61dafb;
 }

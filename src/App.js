@@ -30,10 +30,10 @@ function App() {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                      <Nav className="mr-auto">
-                          <Link to="/">Home</Link>
-                          <Link to="/PokemonGet">Pokemon</Link>
-                          <Link to="/CardGet">Cards</Link>
+                          <Nav className="mr-auto">
+                          <Link className="menuItem" to="/">Home</Link>
+                          <Link className="menuItem" to="/PokemonGet">Pokemon</Link>
+                          <Link className="menuItem" to="/CardGet">Cards</Link>
                       </Nav>
                     </Navbar.Collapse>
                   </Navbar>
