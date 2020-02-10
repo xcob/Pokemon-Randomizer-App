@@ -60,7 +60,7 @@ function Home(){
   return (
     <div>
      <h1 style={{textTransform: 'capitalize', textAlign: 'center', }} >Pokemon Sprite and Card Generator</h1>
-     <img src={wallpaper} />
+     <img src={wallpaper} className="wallpaper" />
     </div>
 )
 }
