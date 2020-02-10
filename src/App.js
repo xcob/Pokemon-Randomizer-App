@@ -269,9 +269,8 @@ render() {
               <Image  style={{justifyContent: 'center', width: '6/0%', }} src={this.state.pokemonCardImage} />     
               <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Set: {this.state.setName}</h3> 
               <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Rarity: {this.state.rarity}</h3> 
-              <Button variant="primary" size="lg" onClick={refreshPage}>
-                <h4 style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Get New Card</h4>
-              </Button>  
+              
+              <Link to="/PokemonGet"><p style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', verticalAlign: 'middle', }}>Get New Card</p></Link>  
             </div>
             
             </Col>
