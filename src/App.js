@@ -132,7 +132,7 @@ componentDidMount() {
       // return pokemon and move set from api
          }else  if (this.state.isLoading === false){
           function refreshPage(){ 
-             PokemonGet();
+            window.location.reload(); 
           }
       
           return (
