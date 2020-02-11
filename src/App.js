@@ -180,7 +180,7 @@ componentDidMount() {
                   </Row>
                     <Row style={{justifyContent: 'center', }}>
                     <Button variant="primary" size="lg" onClick={refreshPage}>
-                      <h4 style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Get New Card</h4>
+                      <h4 style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Get New Pokemon</h4>
                     </Button>     
                     </Row>
               </Container>
