@@ -24,9 +24,12 @@
   color: white;
 }
 
+#homeSection{
+  text-align: center;
+}
+
 .wallpaper{
-  width: 100%;
-  height: auto;
+  width: 375px;
 }
 
 .menuItem{

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import pokemonLogo from './pokemon-logo-vector.png';
-import wallpaper from './Pokemon_Venusaur_chips_white_background_Doritos_1920x1080.jpg';
+import wallpaper from './pokemon-homepage.png';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,14 +18,14 @@ function App() {
       <Container>
                 <Row>
                   <Col  xs={12} >
-                  <Navbar bg="light" expand="lg">
+                  <Navbar bg="" expand="lg">
                     <Navbar.Brand href="/">
                     <img
                         src={pokemonLogo}
                         width="150"
                         height="150"
                         className="d-inline-block align-top"
-                        alt=""
+                        alt="Pokemon Logo"
                       />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -58,9 +58,9 @@ function App() {
 function Home(){
   
   return (
-    <div>
+    <div id="homeSection">
      <h1 style={{textTransform: 'capitalize', textAlign: 'center', }} >Pokemon Sprite and Card Generator</h1>
-     <img src={wallpaper} className="wallpaper" />
+     <img src={wallpaper} className="wallpaper" alt="Pokemon starts and trainers" />
     </div>
 )
 }
