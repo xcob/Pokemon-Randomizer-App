@@ -9,6 +9,7 @@ import {
   Link
 } from "react-router-dom";
 import axios from 'axios';
+import CardGet from './cardComp.js';
 import { Button, Image, ProgressBar, Container, Row, Col, Navbar, Nav, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -147,11 +148,13 @@ componentDidMount() {
                   <div>
                     <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>{this.state.pokemonName}</h1>
                     <Image  style={{justifyContent: 'center', width: '50%', marginLeft: '25%', }} src={this.state.pokemonSprite} />
-                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> Height:  
-                    {this.state.pokemonHeight} 
+                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> 
+                    Height:&nbsp; 
+                    {this.state.pokemonHeight} ft
                     </h3>
-                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> Weight:  
-                    {this.state.pokemonWeight} 
+                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> 
+                    Weight:&nbsp;
+                    {this.state.pokemonWeight} lbs
                     </h3>          
                   </div>
                   </Col>
@@ -159,9 +162,9 @@ componentDidMount() {
                   </Col>
                 </Row>
                   <Row  style={{justifyContent: 'center', }}>
-                    <Col xs={3}>
+                    <Col xs={4}>
                     </Col>
-                    <Col style={{justifyContent: 'center', marginLeft: '',}}  xs={6}>
+                    <Col style={{justifyContent: 'center', marginLeft: '',}}  xs={4}>
                       <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center',  margin: '5px',   width: '100%',}}>
                         {this.state.moveOne}
                       </Button>
@@ -175,12 +178,12 @@ componentDidMount() {
                         {this.state.moveFour}
                         </Button>
                       </Col>
-                    <Col   xs={3}>
+                    <Col   xs={4}>
                     </Col>
                   </Row>
                     <Row style={{justifyContent: 'center', }}>
-                    <Button variant="primary" size="lg" onClick={refreshPage}>
-                      <h4 style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Get New Pokemon</h4>
+                    <Button variant="info" size="lg" onClick={refreshPage}>
+                      Get New Pokemon
                     </Button>     
                     </Row>
               </Container>
@@ -199,88 +202,88 @@ componentDidMount() {
 }
   
 
-class CardGet extends React.Component{
-  state = {
-    pokemonCards: []
-}
-constructor(props) {
-  super(props);
-  this.state = {
-      isLoading: true, 
-      progress: 60,
+// class CardGet extends React.Component{
+//   state = {
+//     pokemonCards: []
+// }
+// constructor(props) {
+//   super(props);
+//   this.state = {
+//       isLoading: true, 
+//       progress: 60,
 
-  };
-}
+//   };
+// }
 
-componentDidMount() {
+// componentDidMount() {
 
-  //assign move to random number for object
-      // let moveNumberOne = Math.floor(Math.random() * 35) + 1;
-      // let moveNumberTwo = Math.floor(Math.random() * 20) + 11;
-      // let moveNumberThree = Math.floor(Math.random() * 30) + 12;
-      // let moveNumberFour = Math.floor(Math.random() * 30) + 13;
-      //assign end of api call to random number
-      let APINumber = Math.floor(Math.random() * 40) + 1;
-      let APIString = String(APINumber);
-      let baseSetNumberAPI = Math.floor(Math.random() * 6) + 1;
-      let baseSetNumber = String(baseSetNumberAPI);
+//   //assign move to random number for object
+//       // let moveNumberOne = Math.floor(Math.random() * 35) + 1;
+//       // let moveNumberTwo = Math.floor(Math.random() * 20) + 11;
+//       // let moveNumberThree = Math.floor(Math.random() * 30) + 12;
+//       // let moveNumberFour = Math.floor(Math.random() * 30) + 13;
+//       //assign end of api call to random number
+//       let APINumber = Math.floor(Math.random() * 40) + 1;
+//       let APIString = String(APINumber);
+//       let baseSetNumberAPI = Math.floor(Math.random() * 6) + 1;
+//       let baseSetNumber = String(baseSetNumberAPI);
       
-      //console.log(APIString);
-  axios
-  // make the call to the pokemon api
-      .get(`https://api.pokemontcg.io/v1/cards/base` + baseSetNumber + `-` + APIString, {
-        // headers: {
-        //   Count: 10,  
-        // }
-      })
-      .then(res => {
-          const cards = res.data;
-          console.log(cards);
-          this.setState({
-            pokemonCardImage: cards.card.imageUrl,
-            pokemonName: cards.card.name,
-            isLoading: false,
-            progress: 100,
-            setName: cards.card.set,
-            rarity: cards.card.rarity
-          });
-      })
-}
-render() {
-  // show loading animation while waiting on axios 
-  if (this.state.isLoading === true){
-    return (
-        <div>
-         <ProgressBar animated now={this.state.progress} />
-        </div>
-    );
+//       //console.log(APIString);
+//   axios
+//   // make the call to the pokemon api
+//       .get(`https://api.pokemontcg.io/v1/cards/base` + baseSetNumber + `-` + APIString, {
+//         // headers: {
+//         //   Count: 10,  
+//         // }
+//       })
+//       .then(res => {
+//           const cards = res.data;
+//           console.log(cards);
+//           this.setState({
+//             pokemonCardImage: cards.card.imageUrl,
+//             pokemonName: cards.card.name,
+//             isLoading: false,
+//             progress: 100,
+//             setName: cards.card.set,
+//             rarity: cards.card.rarity
+//           });
+//       })
+// }
+// render() {
+//   // show loading animation while waiting on axios 
+//   if (this.state.isLoading === true){
+//     return (
+//         <div>
+//          <ProgressBar animated now={this.state.progress} />
+//         </div>
+//     );
 
-    // return pokemon card and name currently 
-  }else if (this.state.isLoading === false){
-    function refreshPage(){ 
-        window.location.reload(); 
-    }
-      return (
-        <Container>
-          <Row>
-            <Col  xs={12}>
-            <div  style={{textAlign: 'center', }}>
-              <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>YOU GOT {this.state.pokemonName}</h1>
-              <Image  style={{justifyContent: 'center', width: '6/0%', }} src={this.state.pokemonCardImage} />     
-              <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Set: {this.state.setName}</h3> 
-              <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Rarity: {this.state.rarity}</h3> 
-              <Button variant="primary" size="lg" onClick={refreshPage}>
-                <h4 style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Get New Card</h4>
-              </Button>  
-            </div>
+//     // return pokemon card and name currently 
+//   }else if (this.state.isLoading === false){
+//     function refreshPage(){ 
+//         window.location.reload(); 
+//     }
+//       return (
+//         <Container>
+//           <Row>
+//             <Col  xs={12}>
+//             <div  style={{textAlign: 'center', }}>
+//               <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>YOU GOT {this.state.pokemonName}</h1>
+//               <Image  style={{justifyContent: 'center', width: '6/0%', }} className='card' src={this.state.pokemonCardImage} />     
+//               <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Set: {this.state.setName}</h3> 
+//               <h3 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Rarity: {this.state.rarity}</h3> 
+//               <Button variant="primary" size="lg" onClick={refreshPage}>
+//                 Get New Card
+//               </Button>  
+//             </div>
             
-            </Col>
-          </Row>
-        </Container>
+//             </Col>
+//           </Row>
+//         </Container>
 
-    );
-  }
-}
+//     );
+//   }
+// }
 
-}
+//}
 export default App;

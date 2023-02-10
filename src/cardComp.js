@@ -1,17 +1,12 @@
 import React from 'react';
 import './App.css';
-import pokemonLogo from './pokemon-logo-vector.png';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 import axios from 'axios';
-import { Button, Image, ProgressBar, Container, Row, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Button, Image, ProgressBar, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class CardGet extends React.Component{
+
+  
     state = {
       pokemonCards: []
   }
@@ -25,6 +20,63 @@ class CardGet extends React.Component{
   }
   
   componentDidMount() {
+
+//     var x;
+// let cards = document.getElementsByClassName("card");
+// let style = document.getElementsByClassName("hover");
+
+// cards.onMousemove(function(e) { 
+//     // normalise touch/mouse
+//     var pos = [e.offsetX,e.offsetY];
+//     e.preventDefault();
+//     if ( e.type === "touchmove" ) {
+//       pos = [ e.touches[0].clientX, e.touches[0].clientY ];
+//     }
+//     var card = this.card;
+//     // math for mouse position
+//     var l = pos[0];
+//     var t = pos[1];
+//     var h = card.height();
+//     var w = card.width();
+//     var px = Math.abs(Math.floor(100 / w * l)-100);
+//     var py = Math.abs(Math.floor(100 / h * t)-100);
+//     var pa = (50-px)+(50-py);
+//     // math for gradient / background positions
+//     var lp = (50+(px - 50)/1.5);
+//     var tp = (50+(py - 50)/1.5);
+//     var px_spark = (50+(px - 50)/7);
+//     var py_spark = (50+(py - 50)/7);
+//     var p_opc = 20+(Math.abs(pa)*1.5);
+//     var ty = ((tp - 50)/2) * -1;
+//     var tx = ((lp - 50)/1.5) * .5;
+//     // css to apply for active card
+//     var grad_pos = `background-position: ${lp}% ${tp}%;`
+//     var sprk_pos = `background-position: ${px_spark}% ${py_spark}%;`
+//     var opc = `opacity: ${p_opc/100};`
+//     var tf = `transform: rotateX(${ty}deg) rotateY(${tx}deg)`
+//     // need to use a <style> tag for psuedo elements
+//     var style = `
+//       .card:hover:before { ${grad_pos} }  /* gradient */
+//       .card:hover:after { ${sprk_pos} ${opc} }   /* sparkles */ 
+//     `
+//     // set / apply css class and style
+//     cards.removeClass("active");
+//     card.removeClass("animated");
+//     card.attr( "style", tf );
+//     style.html(style);
+//     if ( e.type === "touchmove" ) {
+//       return false; 
+//     }
+//     clearTimeout(x);
+//   }).on("mouseout touchend touchcancel", function() {
+//     // remove css, apply custom animation on end
+//     var card = this.card;
+//     style.html("");
+//     card.removeAttr("style");
+//     x = setTimeout(function() {
+//       card.addClass("animated");
+//     },2500);
+//   });
   
     //assign move to random number for object
         // let moveNumberOne = Math.floor(Math.random() * 35) + 1;
@@ -53,7 +105,10 @@ class CardGet extends React.Component{
               pokemonName: cards.card.name,
               isLoading: false,
               progress: 100,
+              setNumber: cards.card.number,
+              cardType: cards.card.types[0],
               setName: cards.card.set,
+              rarity: cards.card.rarity
             });
         })
   }
@@ -67,21 +122,23 @@ class CardGet extends React.Component{
       );
   
       // return pokemon card and name currently 
-    }else if (this.state.isLoading == false){
+    }else if (this.state.isLoading === false){
       function refreshPage(){ 
           window.location.reload(); 
       }
         return (
           <Container>
-            <Row>
-              <Col  xs={12}>
+            <Row >
+              <Col  xs={12} className="justify-content-xs-center">
               <div  style={{textAlign: 'center', }}>
                 <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>YOU GOT {this.state.pokemonName}</h1>
-                <Image  style={{justifyContent: 'center', width: '6/0%', }} src={this.state.pokemonCardImage} />     
-                <h3 style={{textTransform: 'capitalize', textAlign: 'center', }}> Set: {this.state.setName}</h3> 
-                <Button variant="primary" size="lg" onClick={refreshPage}>
-                  <h4 to="/CardGet" style={{textTransform: 'capitalize', textAlign: 'center', color: '#fff', }}>Get New Card</h4>
-                </Button>  
+                <Image  style={{justifyContent: 'center', width: '25%', }} src={this.state.pokemonCardImage}  className='pcard animated'  />     
+                <br /><br /><br />
+                <h4 style={{textTransform: 'capitalize', textAlign: 'center', }}> Set: {this.state.setName}</h4> 
+                <h4 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Rarity: {this.state.rarity}</h4> 
+                <h4 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Type: {this.state.cardType}</h4> 
+                <h4 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Number in set: {this.state.setNumber}</h4> 
+                <Button variant="info" size="lg" onClick={refreshPage}>Get New Card</Button>  
               </div>
               
               </Col>
