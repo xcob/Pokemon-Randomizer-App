@@ -19,6 +19,20 @@
   }
 }
 
+.spriteImg{
+  width: 80%;
+  animation: float infinite 1.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+     transform:translateY(-4px);
+  }
+  50% {
+     transform:translateY(4px);
+  }
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

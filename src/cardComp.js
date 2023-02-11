@@ -132,7 +132,7 @@ class CardGet extends React.Component{
               <Col  xs={12} className="justify-content-xs-center">
               <div  style={{textAlign: 'center', }}>
                 <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>YOU GOT {this.state.pokemonName}</h1>
-                <Image  style={{justifyContent: 'center', width: '25%', }} src={this.state.pokemonCardImage}  className='pcard animated'  />     
+                <Image  style={{justifyContent: 'center', }} src={this.state.pokemonCardImage}  className='pcard animated'  />     
                 <br /><br /><br />
                 <h4 style={{textTransform: 'capitalize', textAlign: 'center', }}> Set: {this.state.setName}</h4> 
                 <h4 style={{textTransform: 'capitalize', textAlign: 'center', marginTop: '10px',}}> Rarity: {this.state.rarity}</h4> 

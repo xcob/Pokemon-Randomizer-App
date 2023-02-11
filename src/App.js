@@ -141,30 +141,30 @@ componentDidMount() {
                 // <Text style={styles.developmentModeText}>{this.state.pokemonName}</Text>
                 // <Text style={styles.infoText}>Type: {this.state.pokemonTypeOne}</Text>
               <Container>
-                <Row>
-                  <Col  xs={4}>
+                <Row style={{justifyContent: 'center', }}>
+                  <Col  xs={2}>
                   </Col>
-                  <Col  xs={4}>
-                  <div>
+                  <Col  xs={8} style={{justifyContent: 'center', }}>
+                  <div style={{justifyContent: 'center', textAlign: 'center',}}>
                     <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>{this.state.pokemonName}</h1>
-                    <Image  style={{justifyContent: 'center', width: '50%', marginLeft: '25%', }} src={this.state.pokemonSprite} />
+                    <Image  style={{justifyContent: 'center', }} src={this.state.pokemonSprite} className="spriteImg"/>
                     <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> 
                     Height:&nbsp; 
-                    {this.state.pokemonHeight} ft
+                    {this.state.pokemonHeight}ft
                     </h3>
                     <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> 
                     Weight:&nbsp;
-                    {this.state.pokemonWeight} lbs
+                    {this.state.pokemonWeight}lbs
                     </h3>          
                   </div>
                   </Col>
-                  <Col  xs={4}>
+                  <Col  xs={2}>
                   </Col>
                 </Row>
                   <Row  style={{justifyContent: 'center', }}>
-                    <Col xs={4}>
+                    <Col xs={3}>
                     </Col>
-                    <Col style={{justifyContent: 'center', marginLeft: '',}}  xs={4}>
+                    <Col style={{justifyContent: 'center', marginLeft: '',}}  xs={6}>
                       <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center',  margin: '5px',   width: '100%',}}>
                         {this.state.moveOne}
                       </Button>
@@ -178,7 +178,7 @@ componentDidMount() {
                         {this.state.moveFour}
                         </Button>
                       </Col>
-                    <Col   xs={4}>
+                    <Col   xs={3}>
                     </Col>
                   </Row>
                     <Row style={{justifyContent: 'center', }}>
