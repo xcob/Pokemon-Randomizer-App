@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
+import styled from "styled-components";
 import pokemonLogo from './pokemon-logo-vector.png';
-import wallpaper from './pokemon-homepage.png';
+import mainImage from './android-chrome-512x512.png';
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,9 +33,9 @@ function App() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                           <Nav className="mr-auto">
-                          <Link className="menuItem" to="/">Home</Link>
-                          <Link className="menuItem" to="/PokemonGet">Pokemon</Link>
-                          <Link className="menuItem" to="/CardGet">Cards</Link>
+                          <MenuLink className="menuItem" to="/">Home</MenuLink>
+                          <MenuLink className="menuItem" to="/PokemonGet">Pokemon</MenuLink>
+                          <MenuLink className="menuItem" to="/CardGet">Cards</MenuLink>
                       </Nav>
                     </Navbar.Collapse>
                   </Navbar>
@@ -61,7 +62,8 @@ function Home(){
   return (
     <div id="homeSection">
      <h1 style={{textTransform: 'capitalize', textAlign: 'center', }} >Pokemon Sprite and Card Generator</h1>
-     <img src={wallpaper} className="wallpaper" alt="Pokemon starts and trainers" />
+     <HomepageText>Click the Pokeball to get your first Pokemon!</HomepageText>
+     <Link to="/PokemonGet"><img src={mainImage} className="wallpaper" alt="Pokemon starts and trainers" /></Link>
     </div>
 )
 }
@@ -141,50 +143,40 @@ componentDidMount() {
                 // <Text style={styles.developmentModeText}>{this.state.pokemonName}</Text>
                 // <Text style={styles.infoText}>Type: {this.state.pokemonTypeOne}</Text>
               <Container>
-                <Row style={{justifyContent: 'center', }}>
-                  <Col  xs={2}>
-                  </Col>
-                  <Col  xs={8} style={{justifyContent: 'center', }}>
-                  <div style={{justifyContent: 'center', textAlign: 'center',}}>
-                    <h1 style={{textTransform: 'capitalize', textAlign: 'center', }}>{this.state.pokemonName}</h1>
+                <Row style={{justifyContent: 'center', }} className="align-items-center">
+                  <Col  sm={12} md={6}>
+                  <InfoContainer>
+                    <PokemonName>{this.state.pokemonName}</PokemonName>
                     <Image  style={{justifyContent: 'center', }} src={this.state.pokemonSprite} className="spriteImg"/>
-                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> 
-                    Height:&nbsp; 
-                    {this.state.pokemonHeight}ft
-                    </h3>
-                    <h3  style={{textTransform: 'capitalize', textAlign: 'center', }}> 
-                    Weight:&nbsp;
-                    {this.state.pokemonWeight}lbs
-                    </h3>          
-                  </div>
+                    <p> 
+                      Height:&nbsp; 
+                      <StatsText>{this.state.pokemonHeight}ft</StatsText>
+                      &nbsp;
+                      &nbsp;
+                      Weight:&nbsp;
+                      <StatsText>{this.state.pokemonWeight}lbs</StatsText>
+                    </p>          
+                  </InfoContainer>
                   </Col>
-                  <Col  xs={2}>
+                  <Col  sm={12} md={6} style={{verticalAlign: 'center'}}>
+                      <MoveSetName>
+                        {this.state.moveOne}
+                      </MoveSetName>
+                      <MoveSetName>
+                        {this.state.moveThree}
+                      </MoveSetName>
+                      <MoveSetName>
+                      {this.state.moveTwo}
+                      </MoveSetName>
+                      <MoveSetName>
+                        {this.state.moveFour}
+                      </MoveSetName>
                   </Col>
                 </Row>
-                  <Row  style={{justifyContent: 'center', }}>
-                    <Col xs={3}>
-                    </Col>
-                    <Col style={{justifyContent: 'center', marginLeft: '',}}  xs={6}>
-                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center',  margin: '5px',   width: '100%',}}>
-                        {this.state.moveOne}
-                      </Button>
-                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px',   width: '100%',}}>
-                        {this.state.moveThree}
-                      </Button>
-                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px', width: '100%', }}>
-                      {this.state.moveTwo}
-                      </Button>
-                      <Button variant="dark" size="lg" href=""  style={{textTransform: 'capitalize', textAlign: 'center', margin: '5px', width: '100%', }}>
-                        {this.state.moveFour}
-                        </Button>
-                      </Col>
-                    <Col   xs={3}>
-                    </Col>
-                  </Row>
-                    <Row style={{justifyContent: 'center', }}>
-                    <Button variant="info" size="lg" onClick={refreshPage}>
+                    <Row style={{justifyContent: 'center', alignItems: 'center' }}>
+                    <NewPokemonSpriteButton onClick={refreshPage}>
                       Get New Pokemon
-                    </Button>     
+                    </NewPokemonSpriteButton>     
                     </Row>
               </Container>
            
@@ -200,8 +192,55 @@ componentDidMount() {
 
 
 }
-  
 
+
+const MenuLink = styled(Link)`
+  font-weight: bold;
+  font-size: .9em;
+  color: #DCE1E9;
+`;
+  
+const InfoContainer = styled.div`
+  text-align: center;
+  color: #DCE1E9;
+`;
+
+const HomepageText = styled.p`
+  text-align: center;
+  color: #DCE1E9;
+  margin-bottom: 20px;
+`;
+
+const PokemonName = styled.h1`
+  font-weight: bold;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: #DCE1E9;
+`;
+
+const NewPokemonSpriteButton = styled(Button)`
+  background-color: #53D8FB;
+  border-color: #53D8FB;
+  margin-bottom: 40px;
+`
+
+const MoveSetName = styled.div`
+  font-weight: bold;
+  font-size: 1.5em;
+  background-color: #53D8FB;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: .5rem;
+  padding: .5rem;
+  text-align: center;
+
+`;
+
+const StatsText = styled.span`
+  font-weight: bold;
+  font-size: .9em;
+`;
 // class CardGet extends React.Component{
 //   state = {
 //     pokemonCards: []

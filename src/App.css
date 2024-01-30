@@ -1,7 +1,14 @@
 :root {
-  --color1: rgb(167, 231, 238);
+  --color1: #363732;
   --color2: rgb(223, 149, 215);
   --back: 
+}
+
+#root{
+  background-color: var(--color1);
+  width: 100vw;
+  height: auto;
+  padding-bottom: 50px;
 }
 
 .App {
@@ -11,6 +18,14 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+#homeSection{
+  height: 100vh;
+}
+
+#homeSection h1{
+  color: #DCE1E9;
 }
 
 @media (prefers-reduced-motion: no-preference) {
